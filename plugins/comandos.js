@@ -29,6 +29,7 @@ _.frases_
 _.memes_
 _.wallpaper_
 _.play_ (nombre de la musica)
+_.play2_ (nombre del video)
 _.joox_
 _.anime_
 _.traducir_ idioma|texto
