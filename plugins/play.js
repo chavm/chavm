@@ -10,7 +10,7 @@ let handler = async (m, { conn, command, text, isPrems, isOwner }) => {
   let isVideo = /2$/.test(command)
   let { dl_link, thumb, title, filesize, filesizeF} = await (isVideo ? ytv : yta)(vid.url, 'id4')
   let isLimit = (isPrems || isOwner ? 99 : limit) * 1024 < filesize
-  if (filesize > 8000) return conn.reply(m.chat, `pesa mucho. elije otra`, m)
+  if (filesize > 48000) return conn.reply(m.chat, `pesa mucho. elije otra`, m)
   conn.sendFile(m.chat, thumb, 'thumbnail.jpg', `
 *🔥Titulo:* ${title}
 *📂Peso:* ${filesizeF}
