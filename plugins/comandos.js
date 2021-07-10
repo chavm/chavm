@@ -48,7 +48,7 @@ _proximo a salir ta-te-ti..._
 _proximo a salir preguntados..._
 
 *___________________________________*
-   _mcopyright_©️insanebot.oficial
+   ȼøᵽɏɍɨǥħŧ©ɨnsȺnɇƀøŧ.øfɨȼɨȺł
 
                                         
 `.trim()) 
