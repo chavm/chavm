@@ -32,6 +32,7 @@ _.play_ (nombre de la musica)
 _.play2_ (nombre del video)
 _.joox_
 _.anime_
+_.google_ (busqueda de wikipedia)
 _.traducir_ idioma|texto
 _.tts_ texto
 _.s_ 
