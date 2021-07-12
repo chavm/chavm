@@ -1,7 +1,4 @@
-let handler = async m => m.reply(`
-
     📍🄻🄾🅂 🄲🄾🄼🄰🄽🄳🄾🅂 🅂🄾🄽 
-
 _.menu_
 _.perfil_
 _.ranking_
@@ -15,9 +12,7 @@ _.ping_
 _.politica_
 _.creditos_
 *___________________________________*
-
       📌🄰🄲🅃🄸🅅🄸🄳🄰🄳🄴🅂  
-
 _.attp_ Texto
 _.ttp_ Texto 
 _.ttpd_ Texto
@@ -38,18 +33,13 @@ _.tts_ texto
 _.s_ 
 _Xs_ pregunta
 *___________________________________*
-
         ➿🄹🅄🄴🄶🄾🅂
-
 _.mate_ medium (ganar exp)
 _.adiv_ start (ganar exp)
-
 _proximo a salir ta-te-ti..._
 _proximo a salir preguntados..._
-
 *___________________________________*
-   ȼøᵽɏɍɨǥħŧ©ɨnsȺnɇƀøŧ.øfɨȼɨȺł
-
+  ȼøᵽɏɍɨǥħŧ©ɨnsȺnɇƀøŧ.øfɨȼɨȺł
                                         
 `.trim()) 
 handler.help = ['comandos']
