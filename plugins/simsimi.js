@@ -13,7 +13,7 @@ let handler  = async (m, { conn, args, usedPrefix, command }) => {
 }
 handler.help = ['simi','s'].map(v => v + ' *text*')
 handler.tags = ['fun']
-handler.command = /^(simi|s)$/i
+handler.command = /^(simi|s|bot)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
