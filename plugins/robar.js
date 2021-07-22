@@ -18,6 +18,7 @@ let handler = async (m, { conn, text }) => {
   if (exp > users[who].exp) return conn.reply(m.chat, `no tiene esa exp`, m)
   if (exp > 1050) return conn.reply(m.chat, `solo puedes robar hasta mil`, m)
   users[m.sender].exp += exp
+  users[m.sender].robos += 1
   users[who].exp -= xp
   await m.reply('_*Robando....*_') 
   await
