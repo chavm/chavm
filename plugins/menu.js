@@ -48,6 +48,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
       'group': 'Grupos',
       'internet': '𝗜𝗻𝘁𝗲𝗿𝗻𝗲𝘁',
       'downloader': 'Descargas',
+      'audio': 'personalizar audios',
       'tools': 'Herramientas',
       'fun': 'Habla conmigo',
       'jadibot': 'Solo persona autorizada',
