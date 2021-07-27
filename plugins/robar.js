@@ -11,8 +11,6 @@ let handler = async (m, { conn, text }) => {
   let xp = parseInt(txt)
   if (isNaN(xp)) return conn.reply(m.chat, `es .robar @mension cantidad`, m)
   let exp = xp
-  let pjk = Math.ceil(xp * pajak)
-  exp += pjk
   if (exp < 1) return conn.reply(m.chat, `minimo 1`, m)
   let users = global.DATABASE._data.users
   if (exp > users[who].exp) return conn.reply(m.chat, `no tiene esa exp`, m)
