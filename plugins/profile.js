@@ -6,7 +6,7 @@ let handler = async (m, { conn }) => {
   try {
     pp = await conn.getProfilePicture(who)
   } catch (e) {
-          handler
+          
   } finally {
     let about = (await conn.getStatus(who).catch(console.error) || {}).status || ''
     let { name, limit, exp, lastclaim, registered, warning, robos, regTime, age, level } = global.DATABASE.data.users[who]
@@ -27,3 +27,4 @@ handler.help = ['perfil [@user]']
 handler.tags = ['tools']
 handler.command = /^(perfil|profile)$/i
 module.exports = handler
+handler.fail = null
