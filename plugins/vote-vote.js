@@ -10,9 +10,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
     } else if (/no/i.test(command)) {
         conn.vote[id][2].push(m.sender)
     }
-    m.reply(`Listo!\n\n*${usedPrefix}cheking* - para chekear los votos`)
-    let [reason, si, no] = conn.vote[id]
-    let mentionedJid = [...si, ...no]
+    m.reply(`Listo!\n\n*${usedPrefix}chekear* - para chekear los votos`)
 }
 handler.help = ['si', 'no']
 handler.tags = ['vote']
