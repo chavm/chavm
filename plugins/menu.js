@@ -47,9 +47,10 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
       'admin': '𝗔𝗱𝗺𝗶𝗻',
       'group': 'Grupos',
       'internet': '𝗜𝗻𝘁𝗲𝗿𝗻𝗲𝘁',
+      'vote': 'Votacion',
       'downloader': 'Descargas',
-      'audio': 'personalizar audios',
       'tools': 'Herramientas',
+      'audio': 'personalizar audios',
       'fun': 'Habla conmigo',
       'jadibot': 'Solo persona autorizada',
       'owner': 'Owner 𝗺𝗲𝗻𝘂',
@@ -153,4 +154,3 @@ function clockString(ms) {
   let s = isNaN(ms) ? '--' : Math.floor(ms / 1000) % 60
   return [h, m, s].map(v => v.toString().padStart(2, 0) ).join(':')
 }
-
