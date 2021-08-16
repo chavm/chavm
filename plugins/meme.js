@@ -9,9 +9,9 @@ let samu = await url.json()
 let erest = samu[Math.floor(Math.random() * samu.length)]
             await conn.sendFile(m.chat, erest, '', 'FUERON DEMACIADAS IMAGENES DE *' + encodeURIComponent(text) + '* ESPERO TE GUSTE ESTA!!🥰', m)
 }
-handler.help = ['imagen']
+handler.help = ['meme']
 handler.tags = ['images']
-handler.command = /^imagen?$/i
+handler.command = /^meme?$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
