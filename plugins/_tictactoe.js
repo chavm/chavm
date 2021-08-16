@@ -13,7 +13,7 @@ handler.before = function (m) {
     let room = Object.values(this.game).find(room => room.id && room.game && room.state && room.id.startsWith('tictactoe') && [room.game.playerX, room.game.playerO].includes(m.sender) && room.state == 'PLAYING')
     if (room) {
         // m.reply(`[DEBUG]\n${parseInt(m.text)}`)
-        if (!/^([1-9]|(me)?nyerah|surr?ender)$/i.test(m.text)) return !0
+        if (!/^(x1|x2|x3|x4|x5|x6|x7|x8|x9|o1|o2|o3|o4|o5|o6|o7|o8|o9|(me)?nyerah|surr?ender)$/i.test(m.text)) return !0
         isSurrender = !/^[1-9]$/.test(m.text)
         if (m.sender !== room.game.currentTurn) { // nek wayahku
             if (!isSurrender) return !0
@@ -37,15 +37,24 @@ handler.before = function (m) {
             return {
                 X: '❌',
                 O: '⭕',
-                1: '1️⃣',
-                2: '2️⃣',
-                3: '3️⃣',
-                4: '4️⃣',
-                5: '5️⃣',
-                6: '6️⃣',
-                7: '7️⃣',
-                8: '8️⃣',
-                9: '9️⃣',
+                x1: '1️⃣',
+                x2: '2️⃣',
+                x3: '3️⃣',
+                x4: '4️⃣',
+                x5: '5️⃣',
+                x6: '6️⃣',
+                x7: '7️⃣',
+                x8: '8️⃣',
+                x9: '9️⃣',
+                o1: '1️⃣',
+                o2: '2️⃣',
+                o3: '3️⃣',
+                o4: '4️⃣',
+                o5: '5️⃣',
+                o6: '6️⃣',
+                o7: '7️⃣',
+                o8: '8️⃣',
+                o9: '9️⃣',
             }[v]
         })
         if (isSurrender) {
