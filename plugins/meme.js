@@ -1,11 +1,16 @@
-const axios = require('axios')
-let handler = async(m, { conn, text }) => {
-let samu = await axios.get('https://meme-api.herokuapp.com/gimme/memesmexico')
-            await conn.sendFile(m.chat, `${samu.data.url}`, '', `${samu.data.title}`, m)
-  }
-handler.help = ['meme']
+let fetch = require('node-fetch')
+//plugin by Samu330
+
+let handler  = async (m, { conn }) => {
+let url = await fetch('https://insanebott.000webhostapp.com/meme')
+//let url = await fetch('https://api.fdci.se/sosmed/rep.php?gambar=' + encodeURIComponent(text))
+let samu = await url.json()
+let erest = samu[Math.floor(Math.random() * samu.length)]
+            await conn.sendFile(m.chat, erest, '', 'MEME', m)
+}
+handler.help = ['imeme']
 handler.tags = ['images']
-handler.command = /^(meme)$/i
+handler.command = /^meme?$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
@@ -16,7 +21,5 @@ handler.admin = false
 handler.botAdmin = false
 
 handler.fail = null
-handler.exp = 0
-handler.limit = true
 
 module.exports = handler
