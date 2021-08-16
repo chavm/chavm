@@ -8,7 +8,7 @@ let samu = await url.json()
 let erest = samu[Math.floor(Math.random() * samu.length)]
             await conn.sendFile(m.chat, erest, '', 'MEME', m)
 }
-handler.help = ['imeme']
+handler.help = ['meme']
 handler.tags = ['images']
 handler.command = /^meme?$/i
 handler.owner = false
