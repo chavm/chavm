@@ -2,7 +2,7 @@ let fetch = require('node-fetch')
 //plugin by Samu330
 try {
 let handler  = async (m, { conn }) => {
-let url = await fetch('https://insanebot.com.ar/memes/memes')
+let url = await fetch('https://insanebott.000webhostapp.com/meme')
 //let url = await fetch('https://api.fdci.se/sosmed/rep.php?gambar=' + encodeURIComponent(text))
 
 let samu = await url.json()
