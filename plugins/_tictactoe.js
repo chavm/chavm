@@ -14,7 +14,7 @@ handler.before = function (m) {
     if (room) {
         // m.reply(`[DEBUG]\n${parseInt(m.text)}`)
         if (!/^(x1|x2|x3|x4|x5|x6|x7|x8|x9|o1|o2|o3|o4|o5|o6|o7|o8|o9|(me)?nyerah|surr?ender)$/i.test(m.text)) return !0
-        isSurrender = !/^[1-9]$/.test(m.text)
+        isSurrender = !/^x1|x2|x3|x4|x5|x6|x7|x8|x9|o1|o2|o3|o4|o5|o6|o7|o8|o9$/.test(m.text)
         if (m.sender !== room.game.currentTurn) { // nek wayahku
             if (!isSurrender) return !0
         }
@@ -63,9 +63,9 @@ handler.before = function (m) {
         }
         let winner = isSurrender ? room.game.currentTurn : room.game.winner
         let str = `
-${arr.slice(0, 3).join('')}
-${arr.slice(3, 6).join('')}
-${arr.slice(6).join('')}
+${arr.slice(x0, x3).join('')}
+${arr.slice(o3, o6).join('')}
+${arr.slice(x6).join('')}
 ${isWin ? `@${winner.split('@')[0]} Menang! (+${winScore} XP)` : isTie ? `Game berakhir (+${playScore} XP)` : `Giliran ${['❌', '⭕'][1 * room.game._currentTurn]} (@${room.game.currentTurn.split('@')[0]})`}
 ❌: @${room.game.playerX.split('@')[0]}
 ⭕: @${room.game.playerO.split('@')[0]}
