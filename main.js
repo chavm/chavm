@@ -125,7 +125,6 @@ for (let filename of fs.readdirSync(pluginFolder).filter(pluginFilter)) {
   try {
     global.plugins[filename] = require(path.join(pluginFolder, filename))
   } catch (e) {
-    conn.logger.error(e)
     delete global.plugins[filename]
   }
 }
@@ -146,7 +145,7 @@ global.reload = (_event, filename) => {
     else try {
       global.plugins[filename] = require(dir)
     } catch (e) {
-      conn.logger.error(e)
+      
     } finally {
       global.plugins = Object.fromEntries(Object.entries(global.plugins).sort(([a], [b]) => a.localeCompare(b)))
     }
