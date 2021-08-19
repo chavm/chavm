@@ -21,30 +21,6 @@ global.timestamp = {
 }
 
 
-if (opts['test']) {
-  conn.user = {
-    jid: '5219984@s.whatsapp.net',
-    name: 'test',
-    phone: {}
-  }
-  conn.prepareMessageMedia = (buffer, mediaType, options = {}) => {
-    return {
-      [mediaType]: {
-        url: '',
-        mediaKey: '',
-        mimetype: options.mimetype || '',
-        fileEncSha256: '',
-        fileSha256: '',
-        fileLength: buffer.length,
-        seconds: options.duration,
-        fileName: options.filename || 'file',
-        gifPlayback: options.mimetype == 'image/gif' || undefined,
-        caption: options.caption,
-        ptt: options.ptt
-      }
-    }
-  }
-
   conn.sendMessage = async (chatId, content, type, opts = {}) => {
     let message = await conn.prepareMessageContent(content, type, opts)
     let waMessage = await conn.prepareMessageFromContent(chatId, message, opts)
