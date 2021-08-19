@@ -108,7 +108,7 @@ global.reloadHandler = function () {
             global.timestamp.connect = new Date
           }
         } catch (e) {
-          conn.logger.error(e)
+          
         }
       }, 5000)
     })
