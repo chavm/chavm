@@ -42,7 +42,15 @@ if (opts['trace']) conn.logger.level = 'trace'
 if (opts['debug']) conn.logger.level = 'debug'
 if (opts['big-qr'] || opts['server']) conn.on('qr', qr => generate(qr, { small: false }))
 let lastJSON = JSON.stringify(global.DATABASE.data)
-
+if (!opts['test']) setInterval(() => {
+  conn.logger.info('Saving database . . .')
+  if (JSON.stringify(global.DATABASE.data) == lastJSON) conn.logger.info('Database is up to date')
+  else {
+    global.DATABASE.save()
+    conn.logger.info('Done saving database!')
+    lastJSON = JSON.stringify(global.DATABASE.data)
+  }
+}, 60 * 1000) // Save every minute
 if (opts['server']) require('./server')(global.conn, PORT)
 
 
