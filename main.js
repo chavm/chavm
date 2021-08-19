@@ -20,10 +20,6 @@ global.timestamp = {
   start: new Date
 }
 
-if (opts['server']) require('./server')(global.conn, PORT)
-
-
-
 
 if (opts['test']) {
   conn.user = {
