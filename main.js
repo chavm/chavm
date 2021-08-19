@@ -19,38 +19,7 @@ global.API = (name, path = '/', query = {}, apikeyqueryname) => (name in global.
 global.timestamp = {
   start: new Date
 }
-// global.LOGGER = logs()
-const PORT = process.env.PORT || 3000
-global.opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse())
 
-global.prefix = new RegExp('^[' + (opts['prefix'] || '‎xzXZ/i!#$%+£¢€¥^°=¶∆×÷π√✓©®:;?&.\\-').replace(/[|\\{}()[\]^$+*?.\-\^]/g, '\\$&') + ']')
-
-global.DATABASE = new (require('./lib/database'))(`${opts._[0] ? opts._[0] + '_' : ''}database.json`, null, 2)
-if (!global.DATABASE.data.users) global.DATABASE.data = {
-  users: {},
-  chats: {},
-  stats: {},
-  msgs: {},
-}
-if (!global.DATABASE.data.chats) global.DATABASE.data.chats = {}
-if (!global.DATABASE.data.stats) global.DATABASE.data.stats = {}
-if (!global.DATABASE.data.stats) global.DATABASE.data.msgs = {}
-global.conn = new WAConnection()
-let authFile = `${opts._[0] || 'session'}.data.json`
-if (fs.existsSync(authFile)) conn.loadAuthInfo(authFile)
-if (opts['trace']) conn.logger.level = 'trace'
-if (opts['debug']) conn.logger.level = 'debug'
-if (opts['big-qr'] || opts['server']) conn.on('qr', qr => generate(qr, { small: false }))
-let lastJSON = JSON.stringify(global.DATABASE.data)
-if (!opts['test']) setInterval(() => {
-  conn.logger.info('Saving database . . .')
-  if (JSON.stringify(global.DATABASE.data) == lastJSON) conn.logger.info('Database is up to date')
-  else {
-    global.DATABASE.save()
-    conn.logger.info('Done saving database!')
-    lastJSON = JSON.stringify(global.DATABASE.data)
-  }
-}, 60 * 1000) // Save every minute
 if (opts['server']) require('./server')(global.conn, PORT)
 
 
