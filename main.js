@@ -19,7 +19,58 @@ global.API = (name, path = '/', query = {}, apikeyqueryname) => (name in global.
 global.timestamp = {
   start: new Date
 }
+// global.LOGGER = logs()
+const PORT = process.env.PORT || 3000
+global.opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse())
 
+global.prefix = new RegExp('^[' + (opts['prefix'] || '‎xzXZ/i!#$%+£¢€¥^°=¶∆×÷π√✓©®:;?&.\\-').replace(/[|\\{}()[\]^$+*?.\-\^]/g, '\\$&') + ']')
+
+global.DATABASE = new (require('./lib/database'))(`${opts._[0] ? opts._[0] + '_' : ''}database.json`, null, 2)
+if (!global.DATABASE.data.users) global.DATABASE.data = {
+  users: {},
+  chats: {},
+  stats: {},
+  msgs: {},
+}
+if (!global.DATABASE.data.chats) global.DATABASE.data.chats = {}
+if (!global.DATABASE.data.stats) global.DATABASE.data.stats = {}
+if (!global.DATABASE.data.stats) global.DATABASE.data.msgs = {}
+global.conn = new WAConnection()
+let authFile = `${opts._[0] || 'session'}.data.json`
+if (fs.existsSync(authFile)) conn.loadAuthInfo(authFile)
+if (opts['trace']) conn.logger.level = 'trace'
+if (opts['debug']) conn.logger.level = 'debug'
+if (opts['big-qr'] || opts['server']) conn.on('qr', qr => generate(qr, { small: false }))
+let lastJSON = JSON.stringify(global.DATABASE.data)
+
+if (opts['server']) require('./server')(global.conn, PORT)
+
+
+
+
+if (opts['test']) {
+  conn.user = {
+    jid: '5219984@s.whatsapp.net',
+    name: 'test',
+    phone: {}
+  }
+  conn.prepareMessageMedia = (buffer, mediaType, options = {}) => {
+    return {
+      [mediaType]: {
+        url: '',
+        mediaKey: '',
+        mimetype: options.mimetype || '',
+        fileEncSha256: '',
+        fileSha256: '',
+        fileLength: buffer.length,
+        seconds: options.duration,
+        fileName: options.filename || 'file',
+        gifPlayback: options.mimetype == 'image/gif' || undefined,
+        caption: options.caption,
+        ptt: options.ptt
+      }
+    }
+  }
 
   conn.sendMessage = async (chatId, content, type, opts = {}) => {
     let message = await conn.prepareMessageContent(content, type, opts)
@@ -80,7 +131,7 @@ global.reloadHandler = function () {
             global.timestamp.connect = new Date
           }
         } catch (e) {
-          
+          conn.logger.error(e)
         }
       }, 5000)
     })
@@ -97,6 +148,7 @@ for (let filename of fs.readdirSync(pluginFolder).filter(pluginFilter)) {
   try {
     global.plugins[filename] = require(path.join(pluginFolder, filename))
   } catch (e) {
+    conn.logger.error(e)
     delete global.plugins[filename]
   }
 }
@@ -117,7 +169,7 @@ global.reload = (_event, filename) => {
     else try {
       global.plugins[filename] = require(dir)
     } catch (e) {
-      
+      conn.logger.error(e)
     } finally {
       global.plugins = Object.fromEntries(Object.entries(global.plugins).sort(([a], [b]) => a.localeCompare(b)))
     }
