@@ -4,7 +4,7 @@ let pajak = 0.02
     let who = text
     if (m.isGroup) who = m.mentionedJid[0]
     else who = m.chat
-  let txt = text.replace('@' + who.split`@`[0], '').trim()
+  let txt = text.replace(text.split`@`[0], '').trim()
   let xp = parseInt(txt)
   if (isNaN(xp)) return conn.reply(m.chat, `es .pagar @mension cantidad`, m)
   let exp = xp
