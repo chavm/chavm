@@ -1,7 +1,6 @@
 let { MessageType } = require('@adiwajshing/baileys')
 let pajak = 0.02
 let handler = async (m, { conn, text }) => {
-  if (!text) return conn.reply(m.chat, `es .pagar @mension cantidad`, m)
   let who = text
     if (m.isGroup) who = m.mentionedJid[0]
     else who = m.chat
