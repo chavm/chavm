@@ -20,7 +20,7 @@ let pajak = 0.02
 handler.help = ['pagar @user <amount>']
 handler.tags = ['xp']
 handler.command = /^pagar$/
-handler.rowner = false
+handler.rowner = true
 handler.group = true
 handler.limit = true
 
