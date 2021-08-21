@@ -1,6 +1,6 @@
 let { MessageType } = require('@adiwajshing/baileys')
 let pajak = 0.02
-    let who = text
+    let who = txt
     if (m.isGroup) who = m.mentionedJid[0]
     else who = m.chat
   let txt = text.replace(text.split`@`[0], '').trim()
