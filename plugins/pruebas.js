@@ -17,11 +17,11 @@ let pajak = 0.02
   m.reply(`Más impuestos gastaste  *${-exp} XP*`)
   conn.fakeReply(m.chat, `te enviaron *+${xp} XP*`, who, m.text)
 }
-handler.help = ['pagar @user <amount>']
-handler.tags = ['xp']
-handler.command = /^pagar$/
+handler.help = ['donar @user <amount>']
+handler.tags = ['']
+handler.command = /^donar$/
 handler.rowner = true
 handler.group = false
 handler.limit = true
 
-module.exports = handlerr
+module.exports = handler
