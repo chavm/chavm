@@ -22,7 +22,7 @@ handler.help = ['donar @user <amount>']
 handler.tags = ['']
 handler.command = /^donar$/
 handler.rowner = true
-handler.group = false
+handler.group = true
 handler.limit = true
 
 module.exports = handler
