@@ -21,7 +21,7 @@ handler.help = ['pagar @user <amount>']
 handler.tags = ['xp']
 handler.command = /^pagar$/
 handler.rowner = true
-handler.group = true
+handler.group = false
 handler.limit = true
 
 module.exports = handlerr
