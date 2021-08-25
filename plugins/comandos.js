@@ -37,6 +37,7 @@ _Xs_ pregunta
         ➿🄹🅄🄴🄶🄾🅂
 _.mate_ medium (ganar exp)
 _.adiv_ start (ganar exp)
+_.carta (nuevo)
 _proximo a salir ta-te-ti..._
 _proximo a salir preguntados..._
 *___________________________________*
@@ -45,6 +46,6 @@ _proximo a salir preguntados..._
 `.trim()) 
 handler.help = ['comandos']
 handler.tags = ['info']
-handler.command = /^(cmd|comandos|commandos|com|hola|list|comando)$/i
+handler.command = /^(cmd|comandos|commandos|com|hola|list|comando|ayuda)$/i
 
 module.exports = handler
