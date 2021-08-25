@@ -20,6 +20,7 @@ module.exports = {
           if (!isNumber(user.limit)) user.limit = 10
           if (!isNumber(user.lastclaim)) user.lastclaim = 0
           if (!isNumber(user.lastrob)) user.lastrob = 0
+          if (!isNumber(user.yugi)) user.yugi = 0
           if (!isNumber(user.robos)) user.robos = 0
           if (!isNumber(user.warning)) user.warning = 0
           if (!'registered' in user) user.registered = false
@@ -38,6 +39,7 @@ module.exports = {
           limit: 10,
           lastclaim: 0,
           lastrob: 0,
+          yugi: 0,
           robos: 0,
           registered: false,
           name: this.getName(m.sender),
