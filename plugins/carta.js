@@ -17,7 +17,7 @@ let erest = samu[Math.floor(Math.random() * samu.length)]
 }
 handler.help = ['carta','yugi']
 handler.tags = ['game']
-handler.command = /^(carta|yugi)?$/i
+handler.command = /^(carta|yugi)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
