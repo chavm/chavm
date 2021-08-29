@@ -10,7 +10,7 @@ let erest = samu[Math.floor(Math.random() * samu.length)]
 }
 handler.help = ['meme','memes']
 handler.tags = ['images']
-handler.command = /^(meme|memes)?$/i
+handler.command = /^(meme|memes)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
