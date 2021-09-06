@@ -84,10 +84,11 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
     }
     conn.menu = conn.menu ? conn.menu : {}
     let before = conn.menu.before || `
- 🙂𝗛ola como estas, %name!
--> Tienes *%limit Limit* *%exp XP*  <-
-🆕 .trabajos (actualizado)
-Más novedades en .info
+╭─「🙂𝗛ola, %name!」
+│ Tienes *%limit Limit* *%exp XP* 
+│🆕 .trabajos (actualizado)
+│Más novedades en .info
+╰────
 %readmore
 * 𝗢𝗯𝗲𝗱𝗲𝗰𝗲 𝗹𝗮𝘀 𝗿𝗲𝗴𝗹𝗮𝘀 
 *Prohibido desobedecer al admin📲
@@ -95,9 +96,9 @@ Más novedades en .info
 *Solo permitido el uso en grupos
 *Agregar el bot a grupos autorizados♻
 %readmore`
-    let header = conn.menu.header || ' %category '
-    let body   = conn.menu.body   || ' %cmd%islimit'
-    let footer = conn.menu.footer || '\n'
+    let header = conn.menu.header || '╭─「 %category 」 '
+    let body   = conn.menu.body   || '│ • %cmd%islimit'
+    let footer = conn.menu.footer || '╰────\n'
     let after  = conn.menu.after  || `
      *Copyright © Insanebot* `
     let _text  = before + '\n'
