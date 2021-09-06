@@ -225,6 +225,7 @@ module.exports = {
             require('./lib/image')(m, this)
             console.log(e)
             if (e) {
+              require('./lib/image')(m, this)
              console.log(e)
             }
           } finally {
@@ -351,4 +352,3 @@ fs.watchFile(file, () => {
   delete require.cache[file]
   if (global.reloadHandler) console.log(global.reloadHandler())
 })
-
