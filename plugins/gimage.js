@@ -1,9 +1,7 @@
-async function retryResize(options, retries = 0) {
-let { imagePath, size, quality = 60, maxRetries = 5 } = options;
 let { promisify } = require('util')
 let _gis = require('g-i-s')
 let gis = promisify(_gis)
-
+let Rimage = require('../lib/image')
 let handler  = async (m, { conn, args, text }) => {
   if (new Date - global.DATABASE._data.users[m.sender].lastmp > 7400) {
   if (!text) return conn.reply(m.chat, `que estas buscando?`, m)
@@ -14,22 +12,6 @@ let handler  = async (m, { conn, args, text }) => {
   conn.sendFile(m.chat, url, 'gimage', `
 ${text}
 `.trim(), m)
-    let image = null;
-    try {
-        image = await Jimp.read(imagePath);
-        await image.resize(size, Jimp.AUTO);
-        await image.quality(quality);
-    } catch (e) {
-        if (retries >= maxRetries) {
-            throw e;
-        }
-                
-        image = await retryResize(options, retries++);
-    }
-   
-
-    return image;
-}
  global.DATABASE._data.users[m.sender].lastmp = new Date * 1
  } else m.reply('Cargando...')
 }
