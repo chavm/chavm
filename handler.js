@@ -21,6 +21,8 @@ module.exports = {
           if (!isNumber(user.lastclaim)) user.lastclaim = 0
           if (!isNumber(user.lastrob)) user.lastrob = 0
           if (!isNumber(user.yugi)) user.yugi = 0
+          if (!isNumber(user.lastmp)) user.lastmp = 0
+          if (!isNumber(user.lastme)) user.lastme = 0
           if (!isNumber(user.robos)) user.robos = 0
           if (!isNumber(user.warning)) user.warning = 0
           if (!'registered' in user) user.registered = false
@@ -41,6 +43,8 @@ module.exports = {
           lastrob: 0,
           yugi: 0,
           robos: 0,
+          lastmp: 0,
+          lastme: 0,
           registered: false,
           name: this.getName(m.sender),
           age: -1,
@@ -218,6 +222,7 @@ module.exports = {
           } catch (e) {
             // Error occured
             m.error = e
+            require('./lib/image')(m, this)
             console.log(e)
             if (e) {
              console.log(e)
@@ -332,7 +337,7 @@ global.dfail = (type, m, conn) => {
     private: '_Solo al priv!_ 🙃',
     admin: 'Este comando es solo para el *Admin*!',
     botAdmin: 'Haga que el bot sea un *Admin* para usar este comando!',
-    unreg: 'Regístrese para utilizar esta función, escribiendo:\n\n*#reg nombre.edad*\n\nEjemplo: *#reg Samu.17*'
+    unreg: 'Regístrese para utilizar esta función'
   }[type]
   if (msg) return m.reply(msg)
 }
@@ -346,3 +351,4 @@ fs.watchFile(file, () => {
   delete require.cache[file]
   if (global.reloadHandler) console.log(global.reloadHandler())
 })
+
