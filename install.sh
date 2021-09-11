@@ -142,6 +142,7 @@ echo -e '\033[0m\033[1;36m
  sleep 3.0
  npm i ffmpeg
  npm i cfonts
+ npm install g-i-t
  echo -e '\033[0m\033[1;32m
    __    __                                    
   / _|  / _|  _ __ ___    _ __     ___    __ _ 
